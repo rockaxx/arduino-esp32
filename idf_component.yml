@@ -51,20 +51,10 @@ files:
 
 dependencies:
   idf: ">=5.3,<5.6"
-
-  # mDNS je nutné (hlavne keď máš H2 alebo C6 bez Wi-Fi, inak môže ísť preč)
-  espressif/mdns:
-    version: "^1.2.3"
-    require: public
-
   # Libsodium (crypto primitives, nutné aj pre OpenThread)
   espressif/libsodium:
     version: "^1.0.20~1"
     require: public
-
-  # LittleFS (ak chceš filesystem)
-  joltwallet/littlefs:
-    version: "^1.10.2"
 
 examples:
   - path: ./idf_component_examples/hello_world
