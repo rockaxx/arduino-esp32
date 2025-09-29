@@ -77,10 +77,8 @@ set(includedirs variants/${CONFIG_ARDUINO_VARIANT}/ cores/esp32/ ${ARDUINO_LIBRA
 set(srcs ${CORE_SRCS} ${ARDUINO_LIBRARIES_SRCS})
 set(priv_includes cores/esp32/libb64)
 
-# --- Required components ---
-set(requires spi_flash esp_partition mbedtls esp_adc esp_ringbuf esp_driver_gptimer driver)
-set(priv_requires nvs_flash app_update spiffs ${ARDUINO_LIBRARIES_REQUIRES})
-
+set(requires spi_flash esp_partition esp_adc esp_ringbuf esp_driver_gptimer driver)
+set(priv_requires nvs_flash app_update)
 # Openthread for C6/H2
 if(IDF_TARGET STREQUAL "esp32c6" OR IDF_TARGET STREQUAL "esp32h2" OR IDF_TARGET STREQUAL "esp32c5")
   list(APPEND requires openthread)
