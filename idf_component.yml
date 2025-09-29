@@ -1,5 +1,5 @@
 description: "Arduino core for ESP32, ESP32-S and ESP32-C series of SoCs"
-url: "https://github.com/espressif/arduino-esp32"
+url: "https://github.com/rockaxx/arduino-esp32"
 license: "LGPL-2.1"
 
 targets:
@@ -52,75 +52,19 @@ files:
 dependencies:
   idf: ">=5.3,<5.6"
 
-  # mDNS je nutné (najmä pre H2 bez Wi-Fi)
+  # mDNS je nutné (hlavne keď máš H2 alebo C6 bez Wi-Fi, inak môže ísť preč)
   espressif/mdns:
     version: "^1.2.3"
     require: public
 
-  # ESP-Modem (ak používaš LTE/GSM modemy)
-  espressif/esp_modem:
-    version: "^1.1.0"
-
-  # Zigbee stack (zboss + zigbee-lib)
-  espressif/esp-zboss-lib:
-    version: "==1.6.4"
-    require: public
-    rules:
-      - if: "target not in [esp32c2, esp32p4]"
-  espressif/esp-zigbee-lib:
-    version: "==1.6.7"
-    require: public
-    rules:
-      - if: "target not in [esp32c2, esp32p4]"
-
-  # DSP library
-  espressif/esp-dsp:
-    version: "^1.3.4"
-    rules:
-      - if: "target != esp32c2"
-
-  # Speech recognition (iba pre S3, P4)
-  espressif/esp-sr:
-    version: "^2.1.5"
-    rules:
-      - if: "target in [esp32s3, esp32p4]"
-
-  # Hosted Wi-Fi (len ESP32P4)
-  espressif/esp_hosted:
-    version: "^2.0.12"
-    rules:
-      - if: "target == esp32p4"
-
-  # Wi-Fi Remote (len ESP32P4)
-  espressif/esp_wifi_remote:
-    version: "^0.13.0"
-    rules:
-      - if: "target == esp32p4"
-
-  # Libsodium (crypto primitives, potrebné aj pre OT)
+  # Libsodium (crypto primitives, nutné aj pre OpenThread)
   espressif/libsodium:
     version: "^1.0.20~1"
     require: public
 
-  # Modbus
-  espressif/esp-modbus:
-    version: "^1.0.15"
-    require: public
-
-  # LittleFS (FS podpora)
+  # LittleFS (ak chceš filesystem)
   joltwallet/littlefs:
     version: "^1.10.2"
-
-  # MP3 decoder
-  chmorgan/esp-libhelix-mp3:
-    version: "1.0.3"
-    require: public
-
-  # LAN867x (iba ESP32, ESP32P4)
-  espressif/lan867x:
-    version: "^2.0.0"
-    rules:
-      - if: "target in [esp32, esp32p4]"
 
 examples:
   - path: ./idf_component_examples/hello_world
